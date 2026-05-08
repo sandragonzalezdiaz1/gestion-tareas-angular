@@ -1,12 +1,11 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { GestorTareasComponent } from "./gestor-tareas/gestor-tareas.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [GestorTareasComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
-  protected readonly title = signal('GestionTareas');
-}
+
+export class App {}
