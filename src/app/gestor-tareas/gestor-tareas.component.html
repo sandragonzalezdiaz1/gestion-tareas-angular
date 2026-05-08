@@ -1,0 +1,23 @@
+<div class="input-container">
+  <label for="nuevaTarea">Introduce una tarea: </label>
+  <input type="text" id="nuevaTarea" [(ngModel)]="nuevaTarea" />
+  <button (click)="agregarTarea()">Añadir tarea</button>
+</div>
+
+@if (tareas().length == 0) {
+  <p>No hay tareas pendientes</p>
+}
+
+<div class="listado-tareas">
+<ul>
+  @for (tarea of tareas(); track $index) {
+    <li class="tarea-item">
+      <div class="tarea-info">
+        <input type="checkbox" [(ngModel)]="tarea.completada" />
+        <span [class.completada]="tarea.completada">{{ tarea.texto }}</span>
+        <button (click)="eliminarTarea($index)">Eliminar</button>
+        </div>
+    </li>
+  }
+</ul>
+</div>
