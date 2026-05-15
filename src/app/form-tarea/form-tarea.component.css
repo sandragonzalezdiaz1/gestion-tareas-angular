@@ -1,0 +1,31 @@
+.input-container {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.input-container button {
+  margin-top: 10px;
+}
+
+mat-form-field {
+  flex: 1;
+}
+
+mat-label {
+    padding-right: 2px;
+}
+
+
+
+/* Mensaje de error */
+.campo-error input {
+  color: #d32f2f;
+}
+
+.mensaje-error {
+  color: #d32f2f;
+}
+

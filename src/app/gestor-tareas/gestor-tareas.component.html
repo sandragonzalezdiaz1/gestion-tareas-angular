@@ -5,35 +5,18 @@
   </mat-card-header>
 
   <mat-card-content>
-    <div class="input-container">
-      <mat-form-field appearance="outline">
-        <mat-label>Nueva tarea:</mat-label>
-        <input matInput placeholder="Estudiar Angular" [(ngModel)]="nuevaTarea">
-      </mat-form-field>
-
-      <button mat-flat-button color="primary" (click)="agregarTarea()">
-        Añadir
-      </button>
-    </div>
+    <app-form-tarea (crearTarea) = "agregarTarea($event)"></app-form-tarea>
   </mat-card-content>
 
   @if (tareas().length == 0) {
-  <p>No hay tareas pendientes</p>
-  }
+  <p class="sin-tareas">No hay tareas pendientes</p>
 
+  } @else {
   <div class="listado-tareas">
     <ul>
-      @for (tarea of tareas(); track $index) {
-      <li class="tarea-item">
-        <div class="tarea-info">
-          <mat-checkbox [(ngModel)]="tarea.completada">
-            <span [class.completada]="tarea.completada">{{ tarea.texto }}</span>
-          </mat-checkbox>
-          <button mat-icon-button color="warn" (click)="eliminarTarea($index)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </div>
-      </li>
+      @for (tarea of tareas() | ordenarPrioridad; track tarea.id) {
+        <app-item-tarea [tarea]="tarea" (tareaAEliminar)="eliminarTarea(tarea.id)"></app-item-tarea>
       }
     </ul>
   </div>
+}

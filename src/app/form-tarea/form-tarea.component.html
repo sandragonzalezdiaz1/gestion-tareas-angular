@@ -1,0 +1,29 @@
+<div class="input-container">
+  <mat-form-field appearance="outline">
+    <mat-label>Nueva tarea</mat-label>
+    <input matInput [(ngModel)]="nuevaTarea" name="nuevaTarea" placeholder="Estudiar Angular" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Prioridad</mat-label>
+    <mat-select name="prioridad" [(ngModel)]="prioridad">
+      <mat-option value="alta">Alta</mat-option>
+      <mat-option value="media">Media</mat-option>
+      <mat-option value="baja">Baja</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" [class.campo-error]="fechaInvalida">
+    <mat-label>Fecha vencimiento</mat-label>
+    <input matInput type="datetime-local" name="fecha" [(ngModel)]="fechaVencimiento" [min]="fechaMinima" [max]="fechaMaxima" required>
+    @if(fechaInvalida){
+      <mat-hint class="mensaje-error">
+        La fecha no puede ser anterior a la fecha actual
+      </mat-hint>
+    }
+  </mat-form-field>
+
+  <button mat-flat-button color="primary" (click)="agregarTarea()">
+    Añadir
+  </button>
+</div>

@@ -4,3 +4,7 @@ body {
   background: linear-gradient(135deg, #fdf2f8, #fce7f3);
   font-family: Roboto, sans-serif;
 }
+
+.mdc-floating-label--required:not(.mdc-floating-label--hide-required-marker)::after {
+  margin-right: 2px !important;
+}

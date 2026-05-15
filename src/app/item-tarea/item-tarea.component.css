@@ -1,0 +1,52 @@
+.tarea-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  background-color: #ffe9f4;
+  border: 1px solid #f1dde7;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.tarea-item {
+  transition: transform 0.2s ease;
+}
+
+.tarea-item:hover {
+  transform: translateY(-2px);
+}
+
+button[mat-icon-button] {
+  color: #ba005c;
+}
+
+button[mat-icon-button]:hover {
+  background-color: #f5cad5;
+}
+
+.tarea-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tarea-info span {
+  font-size: 1rem;
+}
+
+/* Estilos de la tarea marcada como completada */
+.completada {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.prioridad {
+  font-weight: 600;
+}
+
+.fecha {
+  color: #777;
+  font-size: 0.9rem;
+}

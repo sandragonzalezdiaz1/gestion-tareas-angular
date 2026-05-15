@@ -3,25 +3,27 @@ import { Injectable, signal } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
+
 export class GestorTareaService {
 
-constructor() { }
-
-  private listadoTareas = signal<{texto: string, completada: boolean}[]>([]);
+  private listadoTareas = signal<{ id: number, texto: string, completada: boolean, prioridad: string, fechaVencimiento: Date }[]>([]);
   public tareas = this.listadoTareas.asReadonly();
 
+  // Contador para generar IDs únicos
+  private siguienteId = 0;
 
-  public agregarTarea(tarea: string) {
+  public agregarTarea(tarea: { texto: string; prioridad: string; fechaVencimiento: Date; }) {
 
-    this.listadoTareas.update((tareasActuales) => [...tareasActuales, {texto: tarea, completada: false}]);
+    this.listadoTareas.update((tareasActuales) =>
+      [...tareasActuales, { id: this.siguienteId++, texto: tarea.texto, completada: false, prioridad: tarea.prioridad, fechaVencimiento: tarea.fechaVencimiento }]);
+
   }
 
-
-  eliminarTarea(index: number) {
-    // Eliminamos la tarea en la posición dada por el índice
-    this.listadoTareas.update(tareasActuales => tareasActuales.filter((_, i) => i !== index));
+  // Elimina una tarea según su ID
+  eliminarTarea(id: number) {
+  
+    this.listadoTareas.update(tareasActuales => tareasActuales.filter(tarea => tarea.id !== id));
   }
-
 
 
 

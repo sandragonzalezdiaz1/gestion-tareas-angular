@@ -1,0 +1,12 @@
+<li class="tarea-item">
+  <div class="tarea-info">
+    <mat-checkbox [(ngModel)]="tarea.completada">
+      <span [class.completada]="tarea.completada">{{ tarea.texto }}</span>
+    </mat-checkbox>
+    <span class="prioridad">Prioridad: {{ tarea.prioridad }}</span>
+    <span class="fecha">{{ tarea.fechaVencimiento | fechaVencimiento: ahora() }}</span>
+    <button mat-icon-button color="warn" (click)="eliminarTarea()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</li>
